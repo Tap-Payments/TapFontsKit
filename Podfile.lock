@@ -1,0 +1,26 @@
+PODS:
+  - SwiftLint (0.27.0)
+  - TapAdditionsKit/Foundation/Bundle (1.1.1)
+  - TapAdditionsKit/Foundation/Locale (1.1.1)
+  - TapSwiftFixes/Threading (1.0.5)
+
+DEPENDENCIES:
+  - SwiftLint
+  - TapAdditionsKit/Foundation/Bundle
+  - TapAdditionsKit/Foundation/Locale
+  - TapSwiftFixes/Threading
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftLint
+    - TapAdditionsKit
+    - TapSwiftFixes
+
+SPEC CHECKSUMS:
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  TapAdditionsKit: 1635b14798a7d886616d7b1d5d237fae29ebc1a9
+  TapSwiftFixes: eb367e92bbc62a253f1c6737099e58d926e936b8
+
+PODFILE CHECKSUM: 39c07c4cdf01b8a7b1a39d813d1372ff1c4ac4df
+
+COCOAPODS: 1.6.0.beta.1
