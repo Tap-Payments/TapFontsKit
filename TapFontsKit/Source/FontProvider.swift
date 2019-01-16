@@ -2,14 +2,14 @@
 //  FontProvider.swift
 //  TapFontsKit
 //
-//  Copyright © 2017 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 import struct 	CoreGraphics.CGBase.CGFloat
 import class 	CoreGraphics.CGDataProvider.CGDataProvider
 import class 	CoreGraphics.CGFont.CGFont
 import func 	CoreText.CTFontManager.CTFontManagerRegisterGraphicsFont
-import struct	TapAdditionsKit.BundleAdditions
+import class	TapAdditionsKit.Bundle
 import func 	TapSwiftFixes.synchronized
 import class	UIKit.UIFont.UIFont
 
@@ -39,7 +39,7 @@ public class FontProvider {
             
         #else
             
-            if languageIdentifier == Locale.LocaleIdentifier.ar {
+            if languageIdentifier == Locale.TapLocaleIdentifier.ar {
                 
                 fontName = self.arabicFontNames[originalName] ?? .arabicHelveticaNeueRegular
             }
@@ -118,7 +118,7 @@ public class FontProvider {
     
     private static let resourcesBundle: Bundle = {
        
-        guard let bundle = Bundle(for: FontProvider.self).childBundle(named: Constants.resourcesBundleName) else {
+        guard let bundle = Bundle(for: FontProvider.self).tap_childBundle(named: Constants.resourcesBundleName) else {
             
             fatalError("There is no bundle named \(Constants.resourcesBundleName)")
         }
