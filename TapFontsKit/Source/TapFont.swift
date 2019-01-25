@@ -25,6 +25,8 @@ public enum TapFont {
     case arabicHelveticaNeueLight
     case arabicHelveticaNeueRegular
     case arabicHelveticaNeueBold
+	
+	case other(String)
     
     // MARK: - Public -
     // MARK: Methods
@@ -71,6 +73,8 @@ public enum TapFont {
         case .arabicHelveticaNeueLight: 	return "HelveticaNeueLTW20-Light"
         case .arabicHelveticaNeueRegular:	return "HelveticaNeueLTW20-Roman"
         case .arabicHelveticaNeueBold: 		return "HelveticaNeueLTW20-Bold"
+			
+		case .other(let name):				return name
             
         }
     }
@@ -82,3 +86,11 @@ public enum TapFont {
     }
 }
 
+// MARK: - Hashable
+extension TapFont: Hashable {
+	
+	public var hashValue: Int {
+		
+		return self.fileName.hashValue
+	}
+}

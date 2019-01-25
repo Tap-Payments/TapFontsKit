@@ -9,7 +9,7 @@ Pod::Spec.new do |tapFontsKit|
     tapFontsKit.name 					= 'TapFontsKit'
     tapFontsKit.summary 				= 'Kit with fonts used in Tap mobile apps & frameworks.'
     tapFontsKit.requires_arc 			= true
-    tapFontsKit.version 				= '1.0.2'
+    tapFontsKit.version 				= '1.0.3'
     tapFontsKit.license 				= { :type => 'MIT', :file => 'LICENSE' }
     tapFontsKit.author 					= { 'Tap Payments' => 'hello@tap.company' }
     tapFontsKit.homepage 				= 'https://github.com/Tap-Payments/TapFontsKit'
