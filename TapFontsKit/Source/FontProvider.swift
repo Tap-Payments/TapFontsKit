@@ -62,8 +62,10 @@ public class FontProvider {
             
             if !self.loadedFonts.contains(name) {
                 
-                self.loadFont(name)
-                self.loadedFonts.insert(name)
+				if self.loadFont(name) {
+					
+					self.loadedFonts.insert(name)
+				}
             }
             
             guard let font = UIFont(name: name.fileName, size: size) else {
@@ -130,26 +132,30 @@ public class FontProvider {
     
     @available(*, unavailable) private init() {}
     
-    private static func loadFont(_ fontName: TapFont) {
+    private static func loadFont(_ fontName: TapFont) -> Bool {
         
         guard let fontURL = self.resourcesBundle.url(forResource: fontName.fileName, withExtension: fontName.fileExtension) else {
             
-            fatalError("There is no \(fontName.fileName).\(fontName.fileExtension) in fonts bundle.")
+            print("There is no \(fontName.fileName).\(fontName.fileExtension) in fonts bundle.")
+			return false
         }
         
         guard let fontData = try? Data(contentsOf: fontURL) else {
             
-            fatalError("Failed to load \(fontName.fileName).\(fontName.fileExtension) from fonts bundle.")
+            print("Failed to load \(fontName.fileName).\(fontName.fileExtension) from fonts bundle.")
+			return false
         }
         
         guard let dataProvider = CGDataProvider(data: fontData as CFData) else {
             
-            fatalError("Font data for \(fontName.fileName).\(fontName.fileExtension) is incorrect.")
+            print("Font data for \(fontName.fileName).\(fontName.fileExtension) is incorrect.")
+			return false
         }
         
         guard let font = CGFont(dataProvider) else {
             
-            fatalError("Font data for \(fontName.fileName).\(fontName.fileExtension) is incorrect.")
+            print("Font data for \(fontName.fileName).\(fontName.fileExtension) is incorrect.")
+			return false
         }
         
         var error: Unmanaged<CFError>? = nil
@@ -157,8 +163,11 @@ public class FontProvider {
             
             if let nonnullError = error, let errorDescription = CFErrorCopyDescription(nonnullError.takeRetainedValue()) {
 				
-                fatalError("Error occured while registering font: \(errorDescription)")
+                print("Error occured while registering font: \(errorDescription)")
+				return false
             }
         }
+		
+		return true
     }
 }
