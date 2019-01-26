@@ -57,19 +57,32 @@ public class FontProvider {
     // MARK: Methods
     
     internal static func fontWith(name: TapFont, size: CGFloat) -> UIFont {
-        
+		
+		switch name {
+			
+		case .system(let systemFontName):
+			
+			guard let font = UIFont(name: systemFontName, size: size) else {
+				
+				fatalError("Failed to instantiate font \(systemFontName)")
+			}
+			
+			return font
+			
+		default:
+			
+			break
+		}
+		
         return synchronized(self.loadedFonts) {
-            
-            if !self.loadedFonts.contains(name) {
-                
-				if self.loadFont(name) {
-					
-					self.loadedFonts.insert(name)
-				}
-            }
-            
-            guard let font = UIFont(name: name.fileName, size: size) else {
-                
+			
+			if !self.loadedFonts.contains(name), self.loadFont(name) {
+				
+				self.loadedFonts.insert(name)
+			}
+			
+			guard let font = UIFont(name: name.fileName, size: size) else {
+				
                 fatalError("Failed to instantiate font \(name.fileName)")
             }
             

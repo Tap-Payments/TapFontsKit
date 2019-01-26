@@ -26,7 +26,7 @@ public enum TapFont {
     case arabicHelveticaNeueRegular
     case arabicHelveticaNeueBold
 	
-	case other(String)
+	case system(String)
     
     // MARK: - Public -
     // MARK: Methods
@@ -74,8 +74,9 @@ public enum TapFont {
         case .arabicHelveticaNeueRegular:	return "HelveticaNeueLTW20-Roman"
         case .arabicHelveticaNeueBold: 		return "HelveticaNeueLTW20-Bold"
 			
-		case .other(let name):				return name
-            
+		default:
+			
+			fatalError("System font is not accessible through its file.")
         }
     }
     
@@ -91,6 +92,11 @@ extension TapFont: Hashable {
 	
 	public var hashValue: Int {
 		
-		return self.fileName.hashValue
+		switch self {
+			
+		case .system(let name):	return name.hashValue
+		default:				return self.fileName.hashValue
+
+		}
 	}
 }
