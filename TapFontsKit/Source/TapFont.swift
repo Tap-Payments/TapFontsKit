@@ -50,7 +50,7 @@ public enum TapFont {
         
         return FontProvider.fontWith(name: self, size: size)
     }
-    
+	
     // MARK: - Internal -
     // MARK: Properties
     
@@ -90,12 +90,12 @@ public enum TapFont {
 // MARK: - Hashable
 extension TapFont: Hashable {
 	
-	public var hashValue: Int {
-		
+	public func hash(into hasher: inout Hasher) {
+	
 		switch self {
 			
-		case .system(let name):	return name.hashValue
-		default:				return self.fileName.hashValue
+		case .system(let name): hasher.combine(name)
+		default:				hasher.combine(self.fileName)
 
 		}
 	}
