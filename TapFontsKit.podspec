@@ -1,15 +1,15 @@
-TapAdditionsKitDependencyVersion    = '>= 1.3.1'     unless defined? TapAdditionsKitDependencyVersion
-TapSwiftFixesDependencyVersion      = '>= 1.0.8'   unless defined? TapSwiftFixesDependencyVersion
+TapAdditionsKitDependencyVersion    = '>= 1.3.3'	unless defined? TapAdditionsKitDependencyVersion
+TapSwiftFixesDependencyVersion      = '>= 1.0.9'	unless defined? TapSwiftFixesDependencyVersion
 
 Pod::Spec.new do |tapFontsKit|
     
     tapFontsKit.platform 				= :ios
     tapFontsKit.ios.deployment_target	= '8.0'
-	tapFontsKit.swift_versions 			= ['4.2', '5.0']
+	tapFontsKit.swift_versions 			= ['4.0', '4.2', '5.0']
     tapFontsKit.name 					= 'TapFontsKit'
     tapFontsKit.summary 				= 'Kit with fonts used in Tap mobile apps & frameworks.'
     tapFontsKit.requires_arc 			= true
-    tapFontsKit.version 				= '1.0.5'
+    tapFontsKit.version 				= '1.0.6'
     tapFontsKit.license 				= { :type => 'MIT', :file => 'LICENSE' }
     tapFontsKit.author 					= { 'Tap Payments' => 'hello@tap.company' }
     tapFontsKit.homepage 				= 'https://github.com/Tap-Payments/TapFontsKit'
